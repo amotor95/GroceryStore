@@ -12,8 +12,28 @@ public abstract class FoodItem {
 		this.timeTillExpiration = timeTillExpiration;
 	}
 	
-	public abstract double calculatePrice();
+	public abstract double calculatePrice(double foodUnit);
 	
-	public abstract boolean expired();
+	public boolean expired(int daysPassed) {
+		if(daysPassed < this.timeTillExpiration) {
+			return false;
+		}
+		return true;
+	}
 	
+	public boolean isVegan() {
+		return this.vegan;
+	}
+	
+	public boolean isFrozen() {
+		return this.frozen;
+	}
+	
+	public int getExpirationTime() {
+		return this.timeTillExpiration;
+	}
+	
+	public void setExpirationTime(int time) {
+		this.timeTillExpiration = time;
+	}
 }
