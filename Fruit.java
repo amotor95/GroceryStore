@@ -1,4 +1,3 @@
-
 public class Fruit extends FoodItem
 {
 	double pricePerPound;
