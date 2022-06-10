@@ -1,73 +1,36 @@
-public class Vegetable extends FoodItem {
-	
+
+public class Vegetable extends FoodItem
+{
 	private double pricePerPound;
-	private int tempretureKeptAt;
+	private int temperatureKeptAt;
 	private int daysExpired;
 	
-	public Vegetable(boolean frozen, int daysTillExpiration, double costPerPound, int tempretureKeptAt, boolean canned, int daysAfterExpiration) {
-		
+	public Vegetable(boolean frozen, int daysTillExpiration, double costPerPound, int temperatureKeptAt, int daysAfterExpiration) 
+	{
 		super(true, frozen, daysTillExpiration);
 		this.pricePerPound = costPerPound;
+		this.temperatureKeptAt = temperatureKeptAt;
 		this.daysExpired = daysAfterExpiration;
-		
-		
 	}
 	
 	
 	
-	public double calculateprice(double pounds) {
-		
+	public double calculatePrice(double pounds) 
+	{
 		return pricePerPound * pounds;
-		
 	}
 	
 	
-	public boolean safetoeat() {
-		
-		int daysTillExpiration = getExpirationTime();
-		
-		if(isFrozen()) {
-			
-			if((tempretureKeptAt <= 32) && (daysExpired <= 240)) {
-				
+	public boolean safeToEat() 
+	{
+		if (temperatureKeptAt <= 32 && daysExpired <= 240)
 				return true;
-				
-			}
-			
-			else {
-				
+		else 
+		{ 
+			if (daysExpired > 0)
 				return false;
-				
-			}
-			
-		}
-		
-		else {
-			
-			if(daysTillExpiration == 0) {
-				
-				return false;
-			}
-			
-			
-			else {
+			else
 				return true;
-			}
-			
-			
 		}
-		
-		
-		
-		
 	}
-
-
-
-	@Override
-	public double calculatePrice(double foodUnit) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }
